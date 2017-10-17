@@ -1,0 +1,34 @@
+li {
+	list-style-type: none;
+}
+
+.group {
+	display: table;
+}
+
+.group input {
+	background: transparent;
+	border-color: darkgray;
+	color: white;
+}
+
+.group button {
+	color: white;
+	width: 70%;
+	height: 30%;
+}
+
+ul {
+	text-align: left;
+		
+}
+
+.card {
+	background-color: orange;
+	width: 30%;
+	box-shadow: 2px 2px 5px gray;
+}
+
+.card h1 {
+	text-align: center;
+}
