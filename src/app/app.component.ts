@@ -6,17 +6,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    globalId: number = 1;
-    @Input() newTaskText: string = '';
-    
+    globalId = 1;
+    @Input() newTaskText = '';
+
     todoList: Item[] = [];
-       
+
     itemSelected(item) {
         item.completed = !item.completed;
     }
-    
+
     newTask() {
-        if(this.newTaskText.trim() !== '') {
+        if (this.newTaskText.trim() !== '') {
             this.todoList.push({id: this.globalId, text: this.newTaskText, completed: false});
             this.globalId++;
         }
@@ -27,5 +27,5 @@ export class AppComponent {
 class Item {
     id: number;
     text: string;
-    completed: boolean = false;
+    completed = false;
 }
