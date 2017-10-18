@@ -1,32 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-	<mat-card color="primary">
+<div class="app">
+	<mat-card>
 		<h1>New task</h1>
-		<div class="col-xs-8 group">
-			<input mat-input class="form-control" (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText" />
-		</div>
-		<div class="col-xs-4 group">
+		<div>
+		<mat-form-field>
+			<input matInput (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText" />
+		</mat-form-field>
 			<button mat-raised-button color="primary" class="btn btn-lg" (click)="newTask()">Add</button>
 		</div>
-		
-	<h1>Tasks to do</h1>
-	<!-- <ul *ngFor="let item of todoList">
-		<li *ngIf="!item.completed">
-			<label>{{item.text}}
-				<app-dropdown></app-dropdown>
-			</label>
-		</li>
-	</ul> -->
-	<mat-selection-list #items>
-		<mat-list-option *ngFor="let item of todoList">
-			{{item}}
-		</mat-list-option>
-	</mat-selection-list>
-	<h1>Completed tasks</h1>
-	<ul *ngFor="let item of todoList">
-		<li *ngIf="item.completed">
-			<label><input type="checkbox" [checked]="item.completed" (change)="itemSelected(item)"/> {{item.text}}</label>
-		</li>
-	</ul>
+	
+	<mat-tab-group>
+  		<mat-tab label="To do">
+  			<app-backlog-item [(taskList)]="todoList" statusFilter="Todo"></app-backlog-item>
+	  	</mat-tab>
+	  <mat-tab label="Doing">
+	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Doing"></app-backlog-item>
+	  </mat-tab>
+	  <mat-tab label="Pending">
+	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Pending"></app-backlog-item>
+	  </mat-tab>
+	  <mat-tab label="Done">
+	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Done"></app-backlog-item>
+	  </mat-tab>
+	</mat-tab-group>
 	</mat-card>
 </div>

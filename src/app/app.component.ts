@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter } from '@angular/core';
+import { Item } from './item';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +9,19 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
     globalId = 1;
     @Input() newTaskText = '';
-
-    todoList: Item[] = [];
-
-    itemSelected(item) {
-        item.completed = !item.completed;
-    }
+    
+    todoList: Item[] = [
+        {id: this.globalId, text: 'teste1', currentStatus: 'Todo'},
+        {id: this.globalId, text: 'teste2', currentStatus: 'Done'},
+        {id: this.globalId, text: 'teste3', currentStatus: 'Done'},
+        {id: this.globalId, text: 'teste4', currentStatus: 'Doing'}
+    ];
 
     newTask() {
         if (this.newTaskText.trim() !== '') {
-            this.todoList.push({id: this.globalId, text: this.newTaskText, completed: false});
+            this.todoList.push({id: this.globalId, text: this.newTaskText, currentStatus: 'Todo'});
             this.globalId++;
         }
         this.newTaskText = '';
     }
-}
-
-class Item {
-    id: number;
-    text: string;
-    completed = false;
 }

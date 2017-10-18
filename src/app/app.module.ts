@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
 
 import { MaterialModule } from './material.module';
+import { BacklogItemComponent } from './backlog-item/backlog-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DropdownComponent
+    BacklogItemComponent,
   ],
   imports: [
     BrowserModule,
