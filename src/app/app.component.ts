@@ -14,10 +14,10 @@ export class AppComponent {
     statusList = ['Todo', 'Pending', 'Doing', 'Done'];
 
     todoList = [];
-    
+
     updateFilter(currentTab) {
         console.log('updating with filter ' + currentTab);
-        this.filter = currentTab;   
+        this.filter = currentTab;
     }
 
     newTask() {
