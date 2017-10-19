@@ -9,13 +9,16 @@ import { Item } from './item';
 export class AppComponent {
     globalId = 1;
     @Input() newTaskText = '';
-    
+
+    statusList = ['Todo', 'Pending', 'Doing', 'Done'];
+
     todoList: Item[] = [
         {id: this.globalId, text: 'teste1', currentStatus: 'Todo'},
         {id: this.globalId, text: 'teste2', currentStatus: 'Done'},
         {id: this.globalId, text: 'teste3', currentStatus: 'Done'},
         {id: this.globalId, text: 'teste4', currentStatus: 'Doing'}
     ];
+
 
     newTask() {
         if (this.newTaskText.trim() !== '') {

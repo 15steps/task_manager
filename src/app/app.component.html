@@ -10,18 +10,30 @@
 		</div>
 	
 	<mat-tab-group>
-  		<mat-tab label="To do">
-  			<app-backlog-item [(taskList)]="todoList" statusFilter="Todo"></app-backlog-item>
-	  	</mat-tab>
-	  <mat-tab label="Doing">
-	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Doing"></app-backlog-item>
-	  </mat-tab>
+  		<!-- <mat-tab label="To do">
+		</mat-tab>
+		<mat-tab label="Doing">
+
+		</mat-tab>
 	  <mat-tab label="Pending">
-	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Pending"></app-backlog-item>
+	  		
 	  </mat-tab>
 	  <mat-tab label="Done">
-	  		<app-backlog-item [(taskList)]="todoList" statusFilter="Done"></app-backlog-item>
-	  </mat-tab>
+	  		
+	  </mat-tab> -->
+	  <ng-container ngFor="let status of statusList">
+		<mat-tab label="status">
+			<mat-list-item 
+				*ngFor="let ibl of todoList.reverse().filter(it => it.currentStatus === status)">
+				<label>{{ibl.text}}</label>
+				<mat-form-field>
+					<mat-select placeholder="status" #select="matSelect"  (change)="item.currentStatus = select.selected?.viewValue">
+						<mat-option *ngFor="let dp_status of statusList" [value]="status">{{dp_status}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-list-item>
+		</mat-tab>
+	  </ng-container>
 	</mat-tab-group>
 	</mat-card>
 </div>

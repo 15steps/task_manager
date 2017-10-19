@@ -7,21 +7,31 @@ import { Item } from '../item';
   styleUrls: ['./backlog-item.component.css']
 })
 export class BacklogItemComponent implements OnInit {
-    
-    @Input() taskList: Item[];
+
+    taskList: Item[];
     @Input() text: string;
     @Input() statusFilter: string;
-    
+
     @Output() taskListChange = new EventEmitter();
-    
+
+    @Input()
+    get tasks() {
+        return this.taskList;
+    }
+
+    set tasks(t) {
+        this.taskList = t;
+        this.taskListChange.emit(this.taskList);
+    }
+
     @Input() currentSelected: string;
     taskStatus = ['Todo', 'Doing', 'Pending', 'Done'];
-    
+
     itemSelected(item, status) {
         this.currentSelected = status;
-        this.taskList = this.taskList.filter(item => status == this.statusFilter);
+        this.taskList = this.taskList.filter(item => item.currentStatus === this.statusFilter);
     }
-    
+
     constructor() { }
 
     ngOnInit() {

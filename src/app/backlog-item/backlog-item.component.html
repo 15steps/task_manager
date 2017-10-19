@@ -1,6 +1,6 @@
-<div class="item">
+<div class="backlog-item">
 	<mat-list-item *ngFor="let item of taskList.reverse()">
-	  	<div>
+	  	<div *ngIf="item.currentStatus === statusFilter">
 	  		<label>{{item.text}}</label>
 			<mat-form-field>
 		  		<mat-select placeholder="status" #select="matSelect"  (change)="itemSelected(item, select.selected?.viewValue)">
