@@ -4,36 +4,30 @@
 		<h1>New task</h1>
 		<div>
 		<mat-form-field>
-			<input matInput (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText" />
+			<textarea matInput matTextareaAutosize (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText"></textarea>
 		</mat-form-field>
 			<button mat-raised-button color="primary" class="btn btn-lg" (click)="newTask()">Add</button>
 		</div>
 	
-	<mat-tab-group>
-  		<!-- <mat-tab label="To do">
-		</mat-tab>
-		<mat-tab label="Doing">
-
-		</mat-tab>
-	  <mat-tab label="Pending">
-	  		
-	  </mat-tab>
-	  <mat-tab label="Done">
-	  		
-	  </mat-tab> -->
-	  <ng-container ngFor="let status of statusList">
-		<mat-tab label="status">
-			<mat-list-item 
-				*ngFor="let ibl of todoList.reverse().filter(it => it.currentStatus === status)">
-				<label>{{ibl.text}}</label>
-				<mat-form-field>
-					<mat-select placeholder="status" #select="matSelect"  (change)="item.currentStatus = select.selected?.viewValue">
-						<mat-option *ngFor="let dp_status of statusList" [value]="status">{{dp_status}}</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</mat-list-item>
-		</mat-tab>
-	  </ng-container>
-	</mat-tab-group>
+		<mat-tab-group>
+		  <ng-container *ngFor="let status of statusList">
+			<mat-tab label={{status}}>
+				<ng-container *ngFor="let task of todoList.reverse()">
+					<ng-container *ngIf="task.currentStatus === status">
+						<div>
+							<mat-list-item>
+							<label>{{task.text}}</label>
+									<mat-form-field>
+										<mat-select placeholder="status" [(ngModel)]="task.currentStatus">
+											<mat-option *ngFor="let dp_status of statusList" [value]="dp_status">{{dp_status}}</mat-option>
+										</mat-select>
+							</mat-form-field>
+						</mat-list-item>		
+						</div>						
+					</ng-container>
+				</ng-container>
+			</mat-tab>
+		  </ng-container>
+		</mat-tab-group>
 	</mat-card>
 </div>

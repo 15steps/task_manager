@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
 import { BacklogItemComponent } from './backlog-item/backlog-item.component';
-import { StatusPipePipe } from './status-pipe.pipe';
+import { StatusFilterPipe } from './status-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BacklogItemComponent,
-    StatusPipePipe,
+    StatusFilterPipe,
   ],
   imports: [
     BrowserModule,
