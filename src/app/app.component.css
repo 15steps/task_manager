@@ -1,18 +1,15 @@
-/* .app {
-	margin: auto;
-	width: 60%;
+.todo {
+	background: lightgray;
 }
 
-button {
-	width: 20px;
+.doing {
+	background: lightblue; 
 }
 
-textarea {
-	width: auto;
+.pending {
+	background: lightcoral;
 }
 
-label {
-	background: #ededed;
-	padding: 10px 20px 10px 20px;
-	margin-right: 5px;
-} */
+.done {
+	background: lightgreen;
+}

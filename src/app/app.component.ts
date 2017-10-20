@@ -11,7 +11,7 @@ export class AppComponent {
     filter: String;
     @Input() newTaskText = '';
 
-    statusList = ['Todo', 'Pending', 'Doing', 'Done'];
+    statusList = ['Todo', 'Doing', 'Pending', 'Done'];
 
     todoList = [];
 

@@ -1,33 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div fxLayoutAlign="center" >
 	<mat-card fxLayout="column" fxLayoutGap="10px">
-		<h1>New task</h1>
-		<div>
-		<mat-form-field>
-			<textarea matInput matTextareaAutosize (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText"></textarea>
-		</mat-form-field>
-			<button mat-raised-button color="primary" class="btn btn-lg" (click)="newTask()">Add</button>
-		</div>
-	
-		<mat-tab-group>
-		  <ng-container *ngFor="let status of statusList">
-			<mat-tab label={{status}}>
-				<ng-container *ngFor="let task of todoList.reverse()">
-					<ng-container *ngIf="task.currentStatus === status">
-						<div>
-							<mat-list-item>
-							<label>{{task.text}}</label>
-									<mat-form-field>
-										<mat-select placeholder="status" [(ngModel)]="task.currentStatus">
-											<mat-option *ngFor="let dp_status of statusList" [value]="dp_status">{{dp_status}}</mat-option>
-										</mat-select>
-							</mat-form-field>
-						</mat-list-item>		
-						</div>						
+		<md-card-title><b>Simple Task Manager</b></md-card-title>
+		<md-card-content>
+			<div>
+			<mat-form-field>
+				<textarea matInput matTextareaAutosize (keyup.enter)="newTask()" placeholder="Describe your task" type="text" [(ngModel)]="newTaskText"></textarea>
+			</mat-form-field>
+				<button mat-raised-button color="primary" class="btn btn-lg" (click)="newTask()">Add</button>
+			</div>
+		
+			<mat-tab-group>
+				<ng-container *ngFor="let status of statusList">
+				<mat-tab label={{status}}>
+					<ng-container *ngFor="let task of todoList.reverse()">
+						<ng-container *ngIf="task.currentStatus === status">
+							<mat-card class={{status.toLowerCase()}} style="margin-top: 10px" fxLayoutAlign="center stretch">
+								<mat-list-item>
+								<label fxFlexFill>{{task.text}}</label>
+										<mat-form-field>
+											<mat-select placeholder="status" [(ngModel)]="task.currentStatus">
+												<mat-option *ngFor="let dp_status of statusList" [value]="dp_status">{{dp_status}}</mat-option>
+											</mat-select>
+								</mat-form-field>
+							</mat-list-item>		
+						</mat-card>						
+						</ng-container>
 					</ng-container>
+				</mat-tab>
 				</ng-container>
-			</mat-tab>
-		  </ng-container>
-		</mat-tab-group>
+			</mat-tab-group>
+		</md-card-content>
 	</mat-card>
 </div>
