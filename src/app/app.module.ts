@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
 import { StatusFilterPipe } from './status-filter.pipe';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatusFilterPipe,
+    EditDialogComponent,
   ],
   imports: [
     BrowserModule,
